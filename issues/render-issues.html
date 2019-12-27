@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>mdaus io | Home</title>
+</head>
+<body>
+<main>
+  <div class="wrapper">
+    <h1> Flexbox bugs 1</h1>
+    <p>This currently only effects Chrome, Opera, and Edge because these browsers render certain elements differently making them inelligble for certain flex styles.</p>
+    <h2>Fieldsets</h2>
+    <p>Although the <code>&lt;fieldset&gt;</code> wrapping the elements is set to <code>display: flex;</code> the elements don't respect that. They should be on the same row and wrap to the next if there's not enough space, but instead they stack. Open this pen in Firefox and see the below example matches the next (see solution).</p>
+    <form>
+      <fieldset class="d-flex">
+        <legend class="col-1-4">Monster Preference:</legend>
+
+        <div class="col-1-4">
+          <input type="radio" id="kraken-1" name="monster">
+          <label for="kraken-1">Kraken</label>
+        </div>
+
+        <div class="col-1-4">
+          <input type="radio" id="sasquatch-1" name="monster">
+          <label for="sasquatch-1">Sasquatch</label>
+        </div>
+
+        <div class="col-1-4">
+          <input type="radio" id="mothman-1" name="monster">
+          <label for="mothman-1">Mothman</label>
+        </div>
+      </fieldset>
+    </form>
+
+    <h3>The solution</h3>
+    <p>Wrap the inner elements with a <code>&lt;div&gt;</code> and add <code>display: flex;</code> to that. Note, do not wrap the <code>&lt;legend&gt;</code> element in the <code>&lt;div&gt;</code> otherwise your code will flag validators.</p>
+    <form>
+      <fieldset class="checkbox-cards">
+        <legend class="col-1-4">Monster Preference:</legend>
+        <div class="d-flex">
+          <div class="col-1-4">
+            <input type="radio" id="kraken-2" name="monster">
+            <label for="kraken-2">Kraken</label>
+          </div>
+
+          <div class="col-1-4">
+            <input type="radio" id="sasquatch-2" name="monster">
+            <label for="sasquatch-2">Sasquatch</label>
+          </div>
+
+          <div class="col-1-4">
+            <input type="radio" id="mothman-2" name="monster">
+            <label for="mothman-2">Mothman</label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+
+    <h3>What if you need a legend to flex?</h3>
+    <p>For similar reasoning that <code>&lt;fieldset&gt;</code> cannot be a flex container the <code>&lt;legend&gt;</code> element cannot be a flex item. The only cross-browser solution I've managed to come up with is positioning it absolute and offsetting the first flex item to accomodate for it.</p>
+    <form>
+      <fieldset class="p-relative">
+        <legend class="legend-illusion p-absolute">Monster Preference:</legend>
+        <div class="d-flex">
+          <div class="col-1-4 offset-legend">
+            <input type="radio" id="kraken-3" name="monster">
+            <label for="kraken-3">Kraken</label><br/>
+          </div>
+
+          <div class="col-1-4">
+            <input type="radio" id="sasquatch-3" name="monster">
+            <label for="sasquatch-3">Sasquatch</label><br/>
+          </div>
+
+          <div class="col-1-4">
+            <input type="radio" id="mothman-3" name="monster">
+            <label for="mothman-3">Mothman</label>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</main>
+</body>
+</html>
