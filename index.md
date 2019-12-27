@@ -2,7 +2,7 @@
 
   <nav>
 
-    * [Flexbox issues](Flexbox/render-issues.html)
+    * [Flexbox issues](issues/render-issues.html)
 
   </nav>
 
