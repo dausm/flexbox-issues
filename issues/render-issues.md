@@ -10,9 +10,9 @@
   
   Although the `<fieldset>` wrapping the elements is set to `display: flex;` the elements don't respect that. They should be on the same row and wrap to the next if there's not enough space, but instead they stack. Open this pen in Firefox and see the below example matches the next (see solution).
   
-  <form>
+<form>
   
-  <fieldset class="d-flex"><legend class="col-1-4">Monster Preference:</legend>
+<fieldset class="d-flex"><legend class="col-1-4">Monster Preference:</legend>
   
   <div class="col-1-4"><input type="radio" id="kraken-1" name="monster"> <label for="kraken-1">Kraken</label></div>
   
@@ -20,9 +20,9 @@
   
   <div class="col-1-4"><input type="radio" id="mothman-1" name="monster"> <label for="mothman-1">Mothman</label></div>
   
-  </fieldset>
+</fieldset>
   
-  </form>
+</form>
   
   ### The solution
   
