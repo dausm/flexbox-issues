@@ -5,11 +5,13 @@ body{
     font-size: 14px;
     height: 100%;
     min-height: 100vh;
+    margin: 0;
 }
 
 .wrapper {
     max-width: 1020px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .nav ul {
@@ -52,6 +54,10 @@ a:hover, a:focus, a:active {
 .flex-grow {
     flex-grow: 1;
     flex-shrink: 0;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 /* End Flex styles */
 
