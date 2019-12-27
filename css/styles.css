@@ -12,12 +12,22 @@ body{
 
 .nav ul {
     list-style: none;
-    text-decoration: underline;
 }
 
 form {
     background-color: #FFF;
     padding: 1rem;
+    color: #222;
+}
+
+a {
+    color: #94fef1;
+    text-decoration: none;
+}
+
+a:hover, a:focus, a:active {
+    color: #94fef1;
+    text-decoration: underline;
 }
 
 /* Flex styles */
