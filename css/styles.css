@@ -8,6 +8,14 @@ body{
     margin: 0;
 }
 
+main:after {
+    content: "\00a0";
+    display: block;
+    margin-top: 1.5em;
+    height: 0;
+    visibility: hidden;
+}
+
 .wrapper {
     max-width: 1020px;
     margin: 0 auto;
@@ -63,8 +71,8 @@ a:hover, a:focus, a:active {
 .flex-column {
     flex-direction: column;
 }
-/* End Flex styles */
 
+/* End Flex styles */
 .offset-legend {
     margin-left: 150px;
 }
