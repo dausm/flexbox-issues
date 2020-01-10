@@ -13,16 +13,17 @@ body {
 
 header, footer {
     background-color: #d8f5ff;
-    padding: 1rem;
     color: #222;
     font-weight: 600;
+    padding: 1rem;
 }
 
 input[type="button"] {
+    background: #d8f5ff;
     border: 2px solid #FFF;
-    background: #FFF;
-    padding: 0.5rem;
     border-radius: 1rem;
+    font-weight: 600;
+    padding: 0.5rem;
 }
 
 .nav ul {
