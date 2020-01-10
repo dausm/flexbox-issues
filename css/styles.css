@@ -68,7 +68,6 @@ a:hover, a:focus, a:active {
 /* Flex styles */
 .d-flex {
     display: flex;
-    flex-wrap: wrap;
 }
 
 .col-1-4 {
