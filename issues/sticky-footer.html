@@ -15,6 +15,7 @@
     <h1>Sticky Footer</h1>
     <p>Several styles are required for this to work:</p>
     <pre>
+
       html {
         height: 100%;
       }
@@ -28,16 +29,21 @@
       main {
         flex: 1 0 auto;
       }
+
     </pre>
 
-    <p>Can you make the logo bigger yes bigger bigger still the logo is too big the flier should feel like a warm
-      handshake thanks for taking the time to make the website, but i already made it in wix anyway, you are the
-      designer, you know what to do make it look like Apple can you please send me the design specs again?</p>
+    <p>&lt;html&gt; and &lt;body&gt; need 100% height because they need to be the full height of the window.
+      &lt;html&gt; is the container of &lt;body&gt;, &lt;head&gt; and possibly some &lt;script&gt; tags. So if
+      &lt;html&gt; isn't set to 100% then the &lt;body&gt; won't be allowed to expand 100% even if it has the style.</p>
+
+    <p>Adding display: flex to the &lt;body&gt; makes it a flex container. Then it's child elements &lt;header&gt;,
+      &lt;main&gt;, and &lt;footer&gt; become flex items. When you add <code>flex: 1 0 auto;</code> to &lt;main&gt;
+      it's height can now expand to take up the remaining space available inside the &lt;body&gt;.</p>
   </div>
 </main>
 <footer>
   <div class="wrapper">
-    <p>Fancy footer</p>
+    <p>Footer</p>
   </div>
 </footer>
 </body>

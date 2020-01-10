@@ -17,14 +17,14 @@ header, footer {
     color: #222;
 }
 
-.wrapper {
-    max-width: 1020px;
-    margin: 0 auto;
-    padding: 1rem;
-}
-
 .nav ul {
     list-style: none;
+}
+
+pre {
+    background: #444;
+    border-radius: 1rem;
+    border: 2px solid #fff;
 }
 
 form {
@@ -45,6 +45,12 @@ a {
 a:hover, a:focus, a:active {
     color: #94fef1;
     text-decoration: underline;
+}
+
+.wrapper {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 1rem;
 }
 
 .bg-light-gray {
