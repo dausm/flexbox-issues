@@ -16,6 +16,12 @@ main:after {
     visibility: hidden;
 }
 
+header, footer {
+    background-color: #d8f5ff;
+    padding: 1rem;
+    color: #222;
+}
+
 .wrapper {
     max-width: 1020px;
     margin: 0 auto;
