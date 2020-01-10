@@ -33,17 +33,16 @@
       main {
         flex: 1 0 auto;
       }
-
     </pre>
 
-      <p>&lt;html&gt; and &lt;body&gt; need 100% height because they need to be the full height of the window.
-        &lt;html&gt; is the container of &lt;body&gt;, &lt;head&gt; and possibly some &lt;script&gt; tags. So if
-        &lt;html&gt; isn't set to 100% then the &lt;body&gt; won't be allowed to expand 100% even if it has the
-        style.</p>
+      <p>&lt;html&gt; and &lt;body&gt; need <code>height: 100%;<code> because they need to be the full height of the
+        window. &lt;html&gt; is the container of &lt;body&gt;, &lt;head&gt; and possibly some &lt;script&gt; tags. So if
+        &lt;html&gt; isn't set to 100% then in some browsers the &lt;body&gt; won't be allowed to expand 100% even if it
+        has the style.</p>
 
-      <p>Adding display: flex to the &lt;body&gt; makes it a flex container. Then it's child elements &lt;header&gt;,
-        &lt;main&gt;, and &lt;footer&gt; become flex items. When you add <code>flex: 1 0 auto;</code> to &lt;main&gt;
-        it's height can now expand to take up the remaining space available inside the &lt;body&gt;.</p>
+      <p>Adding <code>display: flex;</code> to the &lt;body&gt; makes it a flex container. Then it's child elements
+        &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; become flex items. When you add <code>flex: 1 0 auto;</code>
+        to &lt;main&gt; it's height can now expand to take up the remaining space available inside the &lt;body&gt;.</p>
     </div>
   </div>
 </main>
