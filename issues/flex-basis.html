@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>What is Flex Basis?</title>
+  <link rel="stylesheet" type="text/css" href="../css/styles.css">
+</head>
+<body>
+<main>
+  <div class="wrapper">
+    <h1>What is Flex Basis?</h1>
+
+    <p>When it comes to flex styles it can seem a bit overwhelming at first. Personally the most difficult for me to
+      grasp was <code>flex-basis</code>. <code>flex-basis</code> is the size of a flex item before it is placed into
+      a flex container. That doesn't seem so hard, right?</p>
+
+    <p>Well the confusing part is that when <code>flex-basis</code> isn't set, the element will fall back on it's
+      width style and if that isn't set it'll fall back on the content of the element to determine it's width. You
+      can think of an element's width determined in order of the presence of the:
+    </p>
+    <ol>
+      <li><code>flex-basis</code> style (with optional upper and lower limits set with <code>max-width</code> and
+        <code>min-width</code>)
+      </li>
+      <li><code>width</code> style</li>
+      <li>element's content</li>
+    </ol>
+
+    <h2>So why can't I just use width?</h2>
+    <p>You could but then your flex system would only accommodate rows not columns. Flex-basis accounts for
+      width and height. Remember, the definition above states that flex-basis determines the size of the flex item
+      not just it's width. So for columns, a flex item height is determined by the:</p>
+    <ol>
+      <li><code>flex-basis</code> style (with optional upper and lower limits set with <code>max-<strong>height
+      </strong></code> and <code>min-<strong>height</strong></code>)
+      </li>
+      <li><code>height</code> style</li>
+      <li>element's content</li>
+    </ol>
+
+    <h2>Let's See Some Examples</h2>
+
+    <p>For demonstration purposes the row flex containers width is 400px and columns will have a height of 400px.
+      Flex-wrap is set to nowrap so items are constrained to the size of the container. Depending on your design you
+      would most likely use percentages for flex-basis to account for responsive layouts, but these examples are
+      going to be in pixels to ensure the meaning is conveyed.</p>
+
+
+<!--    No flex basis, only width or height -->
+    <h3>No flex-basis only width or height</h3>
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Here we have three flex items inside a container each with a width of 100px. Since the width style is the
+            first fallback if flex-basis is missing, that style determines the item's size</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div class="w-100p">
+            <p class="flex-center">w: 100px</p>
+          </div>
+
+          <div class="w-100p">
+            <p class="flex-center">w: 100px</p>
+          </div>
+
+          <div class="w-100p">
+            <p class="flex-center">w: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but with height. There are three flex items inside a container with a height of 100px. Since
+            the height style is the first fallback that style determines the item's size</p>
+          </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div class="h-100p">
+            <p class="flex-center">h: 100px</p>
+          </div>
+
+          <div class="h-100p">
+            <p class="flex-center">h: 100px</p>
+          </div>
+
+          <div class="h-100p">
+            <p class="flex-center">h: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!-- No Flex-basis or width/height -->
+    <h3>No Flex-basis or width/height</h3>
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Here we have three flex items inside a container with no width or flex-basis. This is the final
+            fallback for determining item size so the item is as large as the content allows.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div>
+            <p class="flex-center">w: 0px<br>b: 0px</p>
+          </div>
+
+          <div>
+            <p class="flex-center">w: 0px<br>b: 0px</p>
+          </div>
+
+          <div>
+            <p class="flex-center">w: 0px<br>b: 0px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but no height is set.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div>
+            <p class="flex-center">h: 0px<br>b: 0px</p>
+          </div>
+
+          <div>
+            <p class="flex-center">h: 0px<br>b: 0px</p>
+          </div>
+
+          <div>
+            <p class="flex-center">h: 0px<br>b: 0px</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    flex basis great then width or height -->
+    <h3>Flex-basis > width and height</h3>
+
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Again, three flex items inside a container with a width of 100px but they have a flex-basis of 125px.
+            Since flex-basis takes precedence each item's size is 125px.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div class="w-100p f-basis-125">
+            <p class="flex-center">w: 100px<br>b: 125px</p>
+          </div>
+
+          <div class="w-100p f-basis-125">
+            <p class="flex-center">w: 100px<br>b: 125px</p>
+          </div>
+
+          <div class="w-100p f-basis-125">
+            <p class="flex-center">w: 100px<br>b: 125px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but with height.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div class="h-100p f-basis-125">
+            <p class="flex-center">h: 100px<br>b: 125px</p>
+          </div>
+
+          <div class="h-100p f-basis-125">
+            <p class="flex-center">h: 100px<br>b: 125px</p>
+          </div>
+
+          <div class="h-100p f-basis-125">
+            <p class="flex-center">h: 100px<br>b: 125px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!--    Upper limits -->
+    <h3>Upper limits</h3>
+
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>You can limit how large an item can grow with max-width. Although the flex-basis is 125px the max-width
+          is set at 75px so flex items can only grow to 75px.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div class="max-w-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+
+          <div class="max-w-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+
+          <div class="max-w-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but with height.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div class="max-h-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+
+          <div class="max-h-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+
+          <div class="max-h-75p f-basis-125">
+            <p class="flex-center">max: 75px<br>b: 125px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!-- Lower limits -->
+    <h3>Lower limits</h3>
+
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>You can limit how small an item can shrink with min-width. Although the flex-basis is 100px the min-width
+            is set at 125px so flex items must be at least 125px. This can be useful if your flex-basis is a
+            percentage and you need to make sure a certain flex item stays large enough for it's content. Compare
+            this example to the row example for upper limits. If your flex items looked like that without a max-width,
+            you could set a min-width so that content is easier to read.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div class="min-w-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+
+          <div class="min-w-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+
+          <div class="min-w-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but with height.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div class="min-h-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+
+          <div class="min-h-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+
+          <div class="min-h-125p f-basis-100">
+            <p class="flex-center">min: 125px<br>b: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  <!-- Not enough space -->
+  <h3>Not enough container space</h3>
+
+  <h4>Row</h4>
+
+  <div class="d-flex wrap">
+    <div class="col-2-4">
+      <div class="p-r-2">
+        <p>This example is a bit more complex. What happens if a container doesn't have enough space to accommodate
+          each item's flex-basis and lex-wrap is set to nowrap? Then as long as each item has the same flex-shrink
+          property greater then 0, they will scale down to maintain the same aspect ratio. In this example, the first
+          element has a flex-basis of 100px and the other two are set to 200px, 1:2:2. Since there is only 400px of
+          space to fit the 500px of content, the first gets 80px of width while the other two get 160px in order to
+          maintain the same ratio.
+          </p>
+      </div>
+    </div>
+
+    <div class="col-2-4">
+      <div class="d-flex row border">
+        <div class="f-basis-100">
+          <p class="flex-center">b: 100px</p>
+        </div>
+
+        <div class="f-basis-200">
+          <p class="flex-center">b: 200px</p>
+        </div>
+
+        <div class="f-basis-200">
+          <p class="flex-center">b: 200px</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h4>Column</h4>
+
+  <div class="d-flex wrap">
+    <div class="col-2-4">
+      <div class="p-r-2">
+        <p>Same as above but with height. Important to note here, this is only relevant because the column's height
+          is set to 400px. In most cases the column would expand to fit the items.</p>
+      </div>
+    </div>
+
+    <div class="col-2-4">
+      <div class="d-flex flex-column column border">
+        <div class="f-basis-100">
+          <p class="flex-center">b: 100px</p>
+        </div>
+
+        <div class="f-basis-200">
+          <p class="flex-center">b: 200px</p>
+        </div>
+
+        <div class="f-basis-200">
+          <p class="flex-center">b: 200px</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+    <!-- Extra space -->
+    <h3>Extra Container Space</h3>
+
+    <h4>Row</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>This example is a bit more complex. You will need the flex-grow property set to a value of more then 0,
+            typically 1. In certain situations you can get away with flex-basis but there are times where you want
+            one item to take up the extra space. Here all the items have a basis of 100px but the first item has
+            flex-grow set to 1 making it fill the remaining space.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex row border">
+          <div class="f-basis-100 grow">
+            <p class="flex-center">b: 100px</p>
+          </div>
+
+          <div class="f-basis-100">
+            <p class="flex-center">b: 100px</p>
+          </div>
+
+          <div class="f-basis-100">
+            <p class="flex-center">b: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <h4>Column</h4>
+
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <div class="p-r-2">
+          <p>Same as above but with height. Important to note here, this is only relevant because the column's height
+            is set to 400px. In most cases the column would not expand. If you need it to then you would need to
+            adjust the height of the item with other styles, such as min-height.</p>
+        </div>
+      </div>
+
+      <div class="col-2-4">
+        <div class="d-flex flex-column column border">
+          <div class="f-basis-100 grow">
+            <p class="flex-center">b: 100px</p>
+          </div>
+
+          <div class="f-basis-100">
+            <p class="flex-center">b: 100px</p>
+          </div>
+
+          <div class="f-basis-100">
+            <p class="flex-center">b: 100px</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>

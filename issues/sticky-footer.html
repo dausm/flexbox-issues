@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sticky Footer</title>
+  <title>Flexbox Sticky Footer</title>
   <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
-<body class="d-flex flex-column ">
+<body>
 <header>
   <div class="wrapper">
-    <p>Header</p>
+    <p class="p-l-1">Header</p>
   </div>
 </header>
-<main class="grow">
+<main>
   <div class="wrapper">
-    <h1>Sticky Footer</h1>
+    <h1>Flexbox Sticky Footer</h1>
 
     <input onclick="toggle_visibility('copy');" type="button" value="Toggle Content">
 
@@ -37,12 +37,14 @@
 
       <p>&lt;html&gt; and &lt;body&gt; need <code>height: 100%;</code> because they need to be the full height of the
         window. &lt;html&gt; is the container of &lt;body&gt;, &lt;head&gt; and possibly some &lt;script&gt; tags. So if
-        &lt;html&gt; isn't set to 100% then in some browsers the &lt;body&gt; won't be allowed to expand 100% even if it
+        &lt;html&gt; isn't set to 100% then in some browsers it won't default to the full height of the window
+        therfore the &lt;body&gt; won't be allowed to expand past the height of the &lt;html&gt; container even if it
         has the style.</p>
 
       <p>Adding <code>display: flex;</code> to the &lt;body&gt; makes it a flex container. Then it's child elements
         &lt;header&gt;, &lt;main&gt;, and &lt;footer&gt; become flex items. When you add <code>flex: 1 0 auto;</code>
-        to &lt;main&gt; it's height can now expand to take up the remaining space available inside the &lt;body&gt;.</p>
+        to &lt;main&gt; it's height can now expand to take up the remaining space available inside the &lt;body&gt;.
+        This smashes the footer to the bottom of the window giving you the "sticky footer" look.</p>
 
       <p>If your screen isn't tall enough to see a space between the bottom of this copy and the top of the footer
         press the "Toggle Content" button at the top.</p>
@@ -51,7 +53,7 @@
 </main>
 <footer>
   <div class="wrapper">
-    <p>Footer</p>
+    <p class="p-l-1">Footer</p>
   </div>
 </footer>
 </body>

@@ -7,15 +7,16 @@
 <body>
 <main>
   <div class="wrapper">
-    <h1> Flexbox bugs 1</h1>
+    <h1>Render Issues</h1>
     <p>This currently only effects Chrome, Opera, and Edge because these browsers render certain elements differently
-      making them inelligble for certain flex styles.</p>
+      making them inelligble for certain flex styles. Therefore make sure you open this page in one of those
+      browsers.</p>
     <h2>Fieldsets</h2>
     <p>Although the <code>&lt;fieldset&gt;</code> wrapping the elements is set to <code>display: flex;</code> the
       elements don't respect that. They should be on the same row and wrap to the next if there's not enough space, but
-      instead they stack. Open this pen in Firefox and see the below example matches the next (see solution).</p>
+      instead they stack. Open this pen in Firefox and see the below example matches the solution seen below.</p>
     <form>
-      <fieldset class="d-flex">
+      <fieldset class="d-flex wrap">
         <legend class="col-1-4">Monster Preference:</legend>
 
         <div class="col-1-4">
@@ -34,6 +35,42 @@
         </div>
       </fieldset>
     </form>
+
+    <h4>The code:</h4>
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <pre>
+
+        <span class="c-green">&lt;fieldset class="d-flex&gt;</span>
+          <span class="c-yellow">&lt;legend class="col-1-4"&gt;</span>Monster Preference:<span
+          class="c-yellow">&lt;/legend&gt;</span>
+
+          <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+            &lt;input type="radio" id="kraken-c" name="monster"&gt;
+            &lt;label for="kraken-c">Kraken&lt;/label&gt;
+          <span class="c-yellow">&lt;/div&gt;</span>
+
+          <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+            &lt;input type="radio" id="sasquatch-c" name="monster"&gt;
+            &lt;label for="sasquatch-c">Sasquatch&lt;/label&gt;
+          <span class="c-yellow">&lt;/div&gt;</span>
+
+          <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+            &lt;input type="radio" id="mothman-c" name="monster"&gt;
+            &lt;label for="mothman-c"&gt;Mothman&lt;/label&gt;
+          <span class="c-yellow">&lt;/div&gt;</span>
+        <span class="c-green">&lt;/fieldset&gt;</span>
+        </pre>
+      </div>
+      <div class="col-2-4">
+        <p class="p-l-1"><span class="c-green">The fieldset is given a class making it a flex container.</span> Each
+          <span class="c-yellow">child element, including the <code>&lt;legend&gt;</code></span>, is given a class to
+          make it a flex item. However, in the browsers listed above, the child elements stack ignore the flex styles
+          given to them.
+        </p>
+      </div>
+    </div>
+
 
     <h3>The solution</h3>
     <p>Wrap the inner elements with a <code>&lt;div&gt;</code> and add <code>display: flex;</code> to that. Note, do not
@@ -61,14 +98,54 @@
       </fieldset>
     </form>
 
-    <h3>What if you need a legend to flex?</h3>
+    <h4>The code:</h4>
+    <div class="d-flex wrap">
+      <div class="col-2-4">
+        <pre>
+
+        &lt;fieldset class="checkbox-cards"&gt;
+          &lt;legend class="col-1-4"&gt;Monster Preference:&lt;/legend&gt;
+
+          <span class="c-green">&lt;div class="d-flex"&gt;</span>
+
+            <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+              &lt;input type="radio" id="kraken-c" name="monster"&gt;
+              &lt;label for="kraken-c">Kraken&lt;/label&gt;
+            <span class="c-yellow">&lt;/div&gt;</span>
+
+            <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+              &lt;input type="radio" id="sasquatch-c" name="monster"&gt;
+              &lt;label for="sasquatch-c">Sasquatch&lt;/label&gt;
+            <span class="c-yellow">&lt;/div&gt;</span>
+
+            <span class="c-yellow">&lt;div class="col-1-4"&gt;</span>
+              &lt;input type="radio" id="mothman-c" name="monster"&gt;
+              &lt;label for="mothman-c"&gt;Mothman&lt;/label&gt;
+            <span class="c-yellow">&lt;/div&gt;</span>
+
+          <span class="c-green">&lt;/div&gt;</span>
+        &lt;/fieldset&gt;
+        </pre>
+      </div>
+      <div class="col-2-4">
+        <p class="p-l-1">Each inner element is wrapped in two divs. <span class="c-green">One wrapping all of them
+          that is the flex container</span> and <span class="c-yellow">another which makes the inner element a flex
+          item</span>. The class <code>col-1-4</code> specifies how much space each flex item is allowed to take up.
+          In this case it's 25% of the available space. You'll notice that the <code>&lt;legend&gt;</code> also has
+          the class, but since it isn't wrapped in the flex container div it doesn't actually behave like a flex item.
+        </p>
+      </div>
+    </div>
+
+    <h2>What if you need a legend to flex?</h2>
     <p>For similar reasoning that <code>&lt;fieldset&gt;</code> cannot be a flex container the
       <code>&lt;legend&gt;</code> element cannot be a flex item. The only cross-browser solution I've managed to come up
-      with is positioning it absolute and offsetting the first flex item to accomodate for it.</p>
+      with is positioning it absolute so it appears to be in the same row and offsetting the first flex item so it
+      doesn't overlap the <code>&lt;legend&gt;</code>.</p>
     <form>
       <fieldset class="p-relative">
         <legend class="legend-illusion p-absolute">Monster Preference:</legend>
-        <div class="d-flex">
+        <div class="d-flex wrap">
           <div class="col-1-4 offset-legend">
             <input type="radio" id="kraken-3" name="monster">
             <label for="kraken-3">Kraken</label><br/>
