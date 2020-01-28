@@ -9,12 +9,12 @@
   <div class="wrapper">
     <h1>Render Issues</h1>
     <p>This currently only effects Chrome, Opera, and Edge because these browsers render certain elements differently
-      making them inelligble for certain flex styles. Therefore make sure you open this page in one of those
-      browsers.</p>
+      making them inelligble for certain flex styles. Therefore, <u>make sure you open this page in one of those
+        browsers</u>.</p>
     <h2>Fieldsets</h2>
     <p>Although the <code>&lt;fieldset&gt;</code> wrapping the elements is set to <code>display: flex;</code> the
       elements don't respect that. They should be on the same row and wrap to the next if there's not enough space, but
-      instead they stack. Open this pen in Firefox and see the below example matches the solution seen below.</p>
+      instead they stack. Open this page in Firefox and see the below example matches the solution seen below.</p>
     <form>
       <fieldset class="d-flex wrap">
         <legend class="col-1-4">Monster Preference:</legend>
@@ -132,14 +132,15 @@
           that is the flex container</span> and <span class="c-yellow">another which makes the inner element a flex
           item</span>. The class <code>col-1-4</code> specifies how much space each flex item is allowed to take up.
           In this case it's 25% of the available space. You'll notice that the <code>&lt;legend&gt;</code> also has
-          the class, but since it isn't wrapped in the flex container div it doesn't actually behave like a flex item.
+          the class, but since it isn't wrapped in the flex container div it doesn't actually behave like a flex
+          item. It wouldn't flex anyways because of it's own rendering issues. (See next section.)
         </p>
       </div>
     </div>
 
     <h2>What if you need a legend to flex?</h2>
-    <p>For similar reasoning that <code>&lt;fieldset&gt;</code> cannot be a flex container the
-      <code>&lt;legend&gt;</code> element cannot be a flex item. The only cross-browser solution I've managed to come up
+    <p>For similar reasoning that <code>&lt;fieldset&gt;</code> cannot be a flex container the <code>&lt;legend
+      &gt;</code> element cannot be a flex item. The only cross-browser solution I've managed to come up
       with is positioning it absolute so it appears to be in the same row and offsetting the first flex item so it
       doesn't overlap the <code>&lt;legend&gt;</code>.</p>
     <form>
