@@ -54,7 +54,7 @@
       <div class="col-2-4">
         <div class="p-r-2">
           <p>Here we have three flex items inside a container each with a width of 100px. Since the width style is the
-            first fallback if flex-basis is missing, that style determines the item's size</p>
+            first fallback if flex-basis is missing, that style determines the item's size.</p>
         </div>
       </div>
 
@@ -82,7 +82,7 @@
       <div class="col-2-4">
         <div class="p-r-2">
           <p>Same as above but with height. There are three flex items inside a container with a height of 100px. Since
-            the height style is the first fallback that style determines the item's size</p>
+            the height style is the first fallback for columns, that style determines the item's size.</p>
           </div>
       </div>
 
@@ -111,8 +111,9 @@
     <div class="d-flex wrap">
       <div class="col-2-4">
         <div class="p-r-2">
-          <p>Here we have three flex items inside a container with no width or flex-basis. This is the final
-            fallback for determining item size so the item is as large as the content allows.</p>
+          <p>Here we have three flex items inside a container with no width or flex-basis. This uses the final
+            fallback for determining item size so the item is as large as the content allows. Note: there's padding:
+          1rem so that's why there's some space between the content and the edge of the item.</p>
         </div>
       </div>
 
@@ -315,7 +316,7 @@
     <div class="d-flex wrap">
       <div class="col-2-4">
         <div class="p-r-2">
-          <p>Same as above but with height.</p>
+          <p>Same as above row example but with height.</p>
         </div>
       </div>
 
@@ -346,11 +347,11 @@
     <div class="col-2-4">
       <div class="p-r-2">
         <p>This example is a bit more complex. What happens if a container doesn't have enough space to accommodate
-          each item's flex-basis and lex-wrap is set to nowrap? Then as long as each item has the same flex-shrink
+          each item's flex-basis and flex-wrap is set to nowrap? Then as long as each item has the same flex-shrink
           property greater then 0, they will scale down to maintain the same aspect ratio. In this example, the first
-          element has a flex-basis of 100px and the other two are set to 200px, 1:2:2. Since there is only 400px of
-          space to fit the 500px of content, the first gets 80px of width while the other two get 160px in order to
-          maintain the same ratio.
+          element has a flex-basis of 100px and the other two are set to 200px. SO the ratio is 1:2:2. Since there is
+          only 400px of space to fit the 500px of content, the first gets 80px of width while the other two get 160px
+          in order to maintain the same ratio.
           </p>
       </div>
     </div>
